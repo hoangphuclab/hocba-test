@@ -1,0 +1,1881 @@
+{
+  "filename": "upload_hocbalop11_0kr61AlunN.png",
+  "runtime": "ONNX Runtime CPU",
+  "roi_count": 1,
+  "rows_detected": 16,
+  "rows": [
+    {
+      "row": 1,
+      "bbox": [
+        371,
+        935,
+        1824,
+        1025
+      ],
+      "cell_boxes": [
+        [
+          371,
+          935,
+          1066,
+          1025
+        ],
+        [
+          1066,
+          935,
+          1304,
+          1025
+        ],
+        [
+          1304,
+          935,
+          1542,
+          1025
+        ],
+        [
+          1542,
+          935,
+          1824,
+          1025
+        ]
+      ],
+      "heads": {
+        "subject": {
+          "prediction": "Toán",
+          "raw_prediction": "Toán",
+          "confidence": 0.8905479440239269,
+          "constraint_applied": false,
+          "top3": [
+            {
+              "label": "Toán",
+              "probability": 0.8905479440239269
+            },
+            {
+              "label": "Tin học",
+              "probability": 0.0997996698293191
+            },
+            {
+              "label": "Địa lí",
+              "probability": 0.005218499773608443
+            }
+          ]
+        },
+        "HK1": {
+          "prediction": "7.0",
+          "raw_prediction": "7.0",
+          "confidence": 0.9869114998096623,
+          "constraint_applied": true,
+          "top3": [
+            {
+              "label": "7.0",
+              "probability": 0.9869114998096623
+            },
+            {
+              "label": "9.0",
+              "probability": 0.006932315943566694
+            },
+            {
+              "label": "7.6",
+              "probability": 0.0034490427175253315
+            }
+          ]
+        },
+        "HK2": {
+          "prediction": "7.3",
+          "raw_prediction": "7.1",
+          "confidence": 0.11163464274625792,
+          "constraint_applied": true,
+          "top3": [
+            {
+              "label": "7.1",
+              "probability": 0.29238014195863593
+            },
+            {
+              "label": "7.4",
+              "probability": 0.20798505828860228
+            },
+            {
+              "label": "7.0",
+              "probability": 0.14845909553502365
+            }
+          ]
+        },
+        "CN": {
+          "prediction": "7.2",
+          "raw_prediction": "7.2",
+          "confidence": 0.6127182489463839,
+          "constraint_applied": true,
+          "top3": [
+            {
+              "label": "7.2",
+              "probability": 0.6127182489463839
+            },
+            {
+              "label": "7.5",
+              "probability": 0.15283774320668736
+            },
+            {
+              "label": "7.3",
+              "probability": 0.06242651848896837
+            }
+          ]
+        }
+      }
+    },
+    {
+      "row": 2,
+      "bbox": [
+        371,
+        1025,
+        1824,
+        1114
+      ],
+      "cell_boxes": [
+        [
+          371,
+          1025,
+          1066,
+          1114
+        ],
+        [
+          1066,
+          1025,
+          1304,
+          1114
+        ],
+        [
+          1304,
+          1025,
+          1542,
+          1114
+        ],
+        [
+          1542,
+          1025,
+          1824,
+          1114
+        ]
+      ],
+      "heads": {
+        "subject": {
+          "prediction": "Vật lí",
+          "raw_prediction": "Vật lí",
+          "confidence": 0.5511165546400757,
+          "constraint_applied": false,
+          "top3": [
+            {
+              "label": "Vật lí",
+              "probability": 0.5511165546400757
+            },
+            {
+              "label": "Lịch sử",
+              "probability": 0.2079759189159509
+            },
+            {
+              "label": "Địa lí",
+              "probability": 0.1713888807915652
+            }
+          ]
+        },
+        "HK1": {
+          "prediction": "4.0",
+          "raw_prediction": "4.0",
+          "confidence": 0.33740729526864227,
+          "constraint_applied": true,
+          "top3": [
+            {
+              "label": "4.0",
+              "probability": 0.33740729526864227
+            },
+            {
+              "label": "4.8",
+              "probability": 0.13039105581410465
+            },
+            {
+              "label": "5.0",
+              "probability": 0.09114309357257473
+            }
+          ]
+        },
+        "HK2": {
+          "prediction": "4.2",
+          "raw_prediction": "4.4",
+          "confidence": 0.12139874718270785,
+          "constraint_applied": true,
+          "top3": [
+            {
+              "label": "4.4",
+              "probability": 0.21773818152386076
+            },
+            {
+              "label": "5.4",
+              "probability": 0.17095152216344656
+            },
+            {
+              "label": "4.3",
+              "probability": 0.12382724648178944
+            }
+          ]
+        },
+        "CN": {
+          "prediction": "4.1",
+          "raw_prediction": "7.1",
+          "confidence": 0.021407054514865135,
+          "constraint_applied": true,
+          "top3": [
+            {
+              "label": "7.1",
+              "probability": 0.6818116081940028
+            },
+            {
+              "label": "Trống",
+              "probability": 0.1739808742836008
+            },
+            {
+              "label": "5.1",
+              "probability": 0.04360584154957842
+            }
+          ]
+        }
+      }
+    },
+    {
+      "row": 3,
+      "bbox": [
+        371,
+        1114,
+        1824,
+        1203
+      ],
+      "cell_boxes": [
+        [
+          371,
+          1114,
+          1066,
+          1203
+        ],
+        [
+          1066,
+          1114,
+          1304,
+          1203
+        ],
+        [
+          1304,
+          1114,
+          1542,
+          1203
+        ],
+        [
+          1542,
+          1114,
+          1824,
+          1203
+        ]
+      ],
+      "heads": {
+        "subject": {
+          "prediction": "Hóa học",
+          "raw_prediction": "Hóa học",
+          "confidence": 0.7605297179738265,
+          "constraint_applied": false,
+          "top3": [
+            {
+              "label": "Hóa học",
+              "probability": 0.7605297179738265
+            },
+            {
+              "label": "Tin học",
+              "probability": 0.09835187663206463
+            },
+            {
+              "label": "Toán",
+              "probability": 0.07591718807419953
+            }
+          ]
+        },
+        "HK1": {
+          "prediction": "5.3",
+          "raw_prediction": "5.3",
+          "confidence": 0.5815493235590465,
+          "constraint_applied": true,
+          "top3": [
+            {
+              "label": "5.3",
+              "probability": 0.5815493235590465
+            },
+            {
+              "label": "5.5",
+              "probability": 0.2345995120720188
+            },
+            {
+              "label": "5.2",
+              "probability": 0.11561204683382614
+            }
+          ]
+        },
+        "HK2": {
+          "prediction": "6.3",
+          "raw_prediction": "6.3",
+          "confidence": 0.13042114056248305,
+          "constraint_applied": true,
+          "top3": [
+            {
+              "label": "6.3",
+              "probability": 0.13042114056248305
+            },
+            {
+              "label": "6.8",
+              "probability": 0.09579503809562137
+            },
+            {
+              "label": "6.4",
+              "probability": 0.07999800760093231
+            }
+          ]
+        },
+        "CN": {
+          "prediction": "6.0",
+          "raw_prediction": "6.0",
+          "confidence": 0.2989069915920073,
+          "constraint_applied": true,
+          "top3": [
+            {
+              "label": "6.0",
+              "probability": 0.2989069915920073
+            },
+            {
+              "label": "10.0",
+              "probability": 0.2291281466221376
+            },
+            {
+              "label": "5.0",
+              "probability": 0.1607871680626596
+            }
+          ]
+        }
+      }
+    },
+    {
+      "row": 4,
+      "bbox": [
+        371,
+        1203,
+        1824,
+        1292
+      ],
+      "cell_boxes": [
+        [
+          371,
+          1203,
+          1066,
+          1292
+        ],
+        [
+          1066,
+          1203,
+          1304,
+          1292
+        ],
+        [
+          1304,
+          1203,
+          1542,
+          1292
+        ],
+        [
+          1542,
+          1203,
+          1824,
+          1292
+        ]
+      ],
+      "heads": {
+        "subject": {
+          "prediction": "Sinh học",
+          "raw_prediction": "Sinh học",
+          "confidence": 0.8386421105158597,
+          "constraint_applied": false,
+          "top3": [
+            {
+              "label": "Sinh học",
+              "probability": 0.8386421105158597
+            },
+            {
+              "label": "Tin học",
+              "probability": 0.11014946303259932
+            },
+            {
+              "label": "Toán",
+              "probability": 0.026601209603813288
+            }
+          ]
+        },
+        "HK1": {
+          "prediction": "6.6",
+          "raw_prediction": "6.6",
+          "confidence": 0.6575344810434225,
+          "constraint_applied": true,
+          "top3": [
+            {
+              "label": "6.6",
+              "probability": 0.6575344810434225
+            },
+            {
+              "label": "6.9",
+              "probability": 0.09196104962926849
+            },
+            {
+              "label": "6.0",
+              "probability": 0.06055975059758047
+            }
+          ]
+        },
+        "HK2": {
+          "prediction": "7.5",
+          "raw_prediction": "7.5",
+          "confidence": 0.4261317060361468,
+          "constraint_applied": true,
+          "top3": [
+            {
+              "label": "7.5",
+              "probability": 0.4261317060361468
+            },
+            {
+              "label": "7.2",
+              "probability": 0.12253839448414282
+            },
+            {
+              "label": "5.3",
+              "probability": 0.109168595780801
+            }
+          ]
+        },
+        "CN": {
+          "prediction": "7.2",
+          "raw_prediction": "7.2",
+          "confidence": 0.44671010616117024,
+          "constraint_applied": true,
+          "top3": [
+            {
+              "label": "7.2",
+              "probability": 0.44671010616117024
+            },
+            {
+              "label": "7.3",
+              "probability": 0.34807871647945393
+            },
+            {
+              "label": "7.5",
+              "probability": 0.09902444042664611
+            }
+          ]
+        }
+      }
+    },
+    {
+      "row": 5,
+      "bbox": [
+        371,
+        1292,
+        1824,
+        1381
+      ],
+      "cell_boxes": [
+        [
+          371,
+          1292,
+          1066,
+          1381
+        ],
+        [
+          1066,
+          1292,
+          1304,
+          1381
+        ],
+        [
+          1304,
+          1292,
+          1542,
+          1381
+        ],
+        [
+          1542,
+          1292,
+          1824,
+          1381
+        ]
+      ],
+      "heads": {
+        "subject": {
+          "prediction": "Tin học",
+          "raw_prediction": "Tin học",
+          "confidence": 0.642464402220387,
+          "constraint_applied": false,
+          "top3": [
+            {
+              "label": "Tin học",
+              "probability": 0.642464402220387
+            },
+            {
+              "label": "Toán",
+              "probability": 0.29201102278398955
+            },
+            {
+              "label": "Sinh học",
+              "probability": 0.040554185188938566
+            }
+          ]
+        },
+        "HK1": {
+          "prediction": "8.3",
+          "raw_prediction": "8.3",
+          "confidence": 0.7573059683120545,
+          "constraint_applied": true,
+          "top3": [
+            {
+              "label": "8.3",
+              "probability": 0.7573059683120545
+            },
+            {
+              "label": "8.2",
+              "probability": 0.18358423405050495
+            },
+            {
+              "label": "8.7",
+              "probability": 0.017522449569392293
+            }
+          ]
+        },
+        "HK2": {
+          "prediction": "8.0",
+          "raw_prediction": "8.0",
+          "confidence": 0.8071589758452492,
+          "constraint_applied": true,
+          "top3": [
+            {
+              "label": "8.0",
+              "probability": 0.8071589758452492
+            },
+            {
+              "label": "8.1",
+              "probability": 0.09493651927974009
+            },
+            {
+              "label": "8.7",
+              "probability": 0.0298394174716961
+            }
+          ]
+        },
+        "CN": {
+          "prediction": "8.1",
+          "raw_prediction": "8.1",
+          "confidence": 0.49527933484290537,
+          "constraint_applied": true,
+          "top3": [
+            {
+              "label": "8.1",
+              "probability": 0.49527933484290537
+            },
+            {
+              "label": "8.0",
+              "probability": 0.42611138261845055
+            },
+            {
+              "label": "6.1",
+              "probability": 0.060672937549428346
+            }
+          ]
+        }
+      }
+    },
+    {
+      "row": 6,
+      "bbox": [
+        371,
+        1381,
+        1824,
+        1471
+      ],
+      "cell_boxes": [
+        [
+          371,
+          1381,
+          1066,
+          1471
+        ],
+        [
+          1066,
+          1381,
+          1304,
+          1471
+        ],
+        [
+          1304,
+          1381,
+          1542,
+          1471
+        ],
+        [
+          1542,
+          1381,
+          1824,
+          1471
+        ]
+      ],
+      "heads": {
+        "subject": {
+          "prediction": "Ngữ văn",
+          "raw_prediction": "Ngữ văn",
+          "confidence": 0.9965906005612715,
+          "constraint_applied": false,
+          "top3": [
+            {
+              "label": "Ngữ văn",
+              "probability": 0.9965906005612715
+            },
+            {
+              "label": "Tin học",
+              "probability": 0.0013514302289675255
+            },
+            {
+              "label": "Vật lí",
+              "probability": 0.0006949228001324234
+            }
+          ]
+        },
+        "HK1": {
+          "prediction": "7.9",
+          "raw_prediction": "7.9",
+          "confidence": 0.9717867112961831,
+          "constraint_applied": true,
+          "top3": [
+            {
+              "label": "7.9",
+              "probability": 0.9717867112961831
+            },
+            {
+              "label": "7.5",
+              "probability": 0.006896100789416612
+            },
+            {
+              "label": "7.7",
+              "probability": 0.006116287590799942
+            }
+          ]
+        },
+        "HK2": {
+          "prediction": "7.3",
+          "raw_prediction": "7.7",
+          "confidence": 0.31758773039919236,
+          "constraint_applied": true,
+          "top3": [
+            {
+              "label": "7.7",
+              "probability": 0.3830388107525438
+            },
+            {
+              "label": "7.3",
+              "probability": 0.31758773039919236
+            },
+            {
+              "label": "7.2",
+              "probability": 0.20157285941001662
+            }
+          ]
+        },
+        "CN": {
+          "prediction": "7.5",
+          "raw_prediction": "7.5",
+          "confidence": 0.7777293993101178,
+          "constraint_applied": true,
+          "top3": [
+            {
+              "label": "7.5",
+              "probability": 0.7777293993101178
+            },
+            {
+              "label": "9.3",
+              "probability": 0.08504840093827734
+            },
+            {
+              "label": "9.5",
+              "probability": 0.060238219999133695
+            }
+          ]
+        }
+      }
+    },
+    {
+      "row": 7,
+      "bbox": [
+        371,
+        1471,
+        1824,
+        1560
+      ],
+      "cell_boxes": [
+        [
+          371,
+          1471,
+          1066,
+          1560
+        ],
+        [
+          1066,
+          1471,
+          1304,
+          1560
+        ],
+        [
+          1304,
+          1471,
+          1542,
+          1560
+        ],
+        [
+          1542,
+          1471,
+          1824,
+          1560
+        ]
+      ],
+      "heads": {
+        "subject": {
+          "prediction": "Lịch sử",
+          "raw_prediction": "Lịch sử",
+          "confidence": 0.9954956533651174,
+          "constraint_applied": false,
+          "top3": [
+            {
+              "label": "Lịch sử",
+              "probability": 0.9954956533651174
+            },
+            {
+              "label": "Ngoại ngữ",
+              "probability": 0.003308865171299169
+            },
+            {
+              "label": "Hóa học",
+              "probability": 0.0006202729042739266
+            }
+          ]
+        },
+        "HK1": {
+          "prediction": "5.3",
+          "raw_prediction": "5.2",
+          "confidence": 0.3279012886471351,
+          "constraint_applied": true,
+          "top3": [
+            {
+              "label": "5.2",
+              "probability": 0.41371483301730877
+            },
+            {
+              "label": "5.3",
+              "probability": 0.3279012886471351
+            },
+            {
+              "label": "9.2",
+              "probability": 0.10515209553705572
+            }
+          ]
+        },
+        "HK2": {
+          "prediction": "6.0",
+          "raw_prediction": "5.0",
+          "confidence": 0.17897113723753713,
+          "constraint_applied": true,
+          "top3": [
+            {
+              "label": "5.0",
+              "probability": 0.4063210691138109
+            },
+            {
+              "label": "6.0",
+              "probability": 0.17897113723753713
+            },
+            {
+              "label": "6.1",
+              "probability": 0.12201559131662762
+            }
+          ]
+        },
+        "CN": {
+          "prediction": "5.8",
+          "raw_prediction": "5.6",
+          "confidence": 0.2679261904914925,
+          "constraint_applied": true,
+          "top3": [
+            {
+              "label": "5.6",
+              "probability": 0.29407139328829
+            },
+            {
+              "label": "5.8",
+              "probability": 0.2679261904914925
+            },
+            {
+              "label": "5.4",
+              "probability": 0.13244136887600944
+            }
+          ]
+        }
+      }
+    },
+    {
+      "row": 8,
+      "bbox": [
+        371,
+        1560,
+        1824,
+        1649
+      ],
+      "cell_boxes": [
+        [
+          371,
+          1560,
+          1066,
+          1649
+        ],
+        [
+          1066,
+          1560,
+          1304,
+          1649
+        ],
+        [
+          1304,
+          1560,
+          1542,
+          1649
+        ],
+        [
+          1542,
+          1560,
+          1824,
+          1649
+        ]
+      ],
+      "heads": {
+        "subject": {
+          "prediction": "Địa lí",
+          "raw_prediction": "Địa lí",
+          "confidence": 0.9779935843465563,
+          "constraint_applied": false,
+          "top3": [
+            {
+              "label": "Địa lí",
+              "probability": 0.9779935843465563
+            },
+            {
+              "label": "Toán",
+              "probability": 0.016281971142271416
+            },
+            {
+              "label": "Lịch sử",
+              "probability": 0.0034701180151485186
+            }
+          ]
+        },
+        "HK1": {
+          "prediction": "6.9",
+          "raw_prediction": "6.6",
+          "confidence": 0.05861444274161973,
+          "constraint_applied": true,
+          "top3": [
+            {
+              "label": "6.6",
+              "probability": 0.8294650319319081
+            },
+            {
+              "label": "6.9",
+              "probability": 0.05861444274161973
+            },
+            {
+              "label": "6.0",
+              "probability": 0.042808119783105905
+            }
+          ]
+        },
+        "HK2": {
+          "prediction": "7.6",
+          "raw_prediction": "9.6",
+          "confidence": 0.3173530122266629,
+          "constraint_applied": true,
+          "top3": [
+            {
+              "label": "9.6",
+              "probability": 0.42145131070214026
+            },
+            {
+              "label": "7.6",
+              "probability": 0.3173530122266629
+            },
+            {
+              "label": "5.6",
+              "probability": 0.06799062808581563
+            }
+          ]
+        },
+        "CN": {
+          "prediction": "7.4",
+          "raw_prediction": "7.4",
+          "confidence": 0.553015965690126,
+          "constraint_applied": true,
+          "top3": [
+            {
+              "label": "7.4",
+              "probability": 0.553015965690126
+            },
+            {
+              "label": "5.4",
+              "probability": 0.1008341744147079
+            },
+            {
+              "label": "7.2",
+              "probability": 0.08861906070699217
+            }
+          ]
+        }
+      }
+    },
+    {
+      "row": 9,
+      "bbox": [
+        371,
+        1649,
+        1824,
+        1738
+      ],
+      "cell_boxes": [
+        [
+          371,
+          1649,
+          1066,
+          1738
+        ],
+        [
+          1066,
+          1649,
+          1304,
+          1738
+        ],
+        [
+          1304,
+          1649,
+          1542,
+          1738
+        ],
+        [
+          1542,
+          1649,
+          1824,
+          1738
+        ]
+      ],
+      "heads": {
+        "subject": {
+          "prediction": "Ngoại ngữ",
+          "raw_prediction": "Ngoại ngữ",
+          "confidence": 0.9855630388127967,
+          "constraint_applied": false,
+          "top3": [
+            {
+              "label": "Ngoại ngữ",
+              "probability": 0.9855630388127967
+            },
+            {
+              "label": "Lịch sử",
+              "probability": 0.0041585171560941155
+            },
+            {
+              "label": "Ngữ văn",
+              "probability": 0.003912042999702433
+            }
+          ]
+        },
+        "HK1": {
+          "prediction": "6.6",
+          "raw_prediction": "6.4",
+          "confidence": 0.07877078338565696,
+          "constraint_applied": true,
+          "top3": [
+            {
+              "label": "6.4",
+              "probability": 0.3556087436198251
+            },
+            {
+              "label": "6.3",
+              "probability": 0.34189281152768863
+            },
+            {
+              "label": "6.6",
+              "probability": 0.07877078338565696
+            }
+          ]
+        },
+        "HK2": {
+          "prediction": "7.5",
+          "raw_prediction": "7.2",
+          "confidence": 0.22222657817282265,
+          "constraint_applied": true,
+          "top3": [
+            {
+              "label": "7.2",
+              "probability": 0.24041006054906489
+            },
+            {
+              "label": "7.5",
+              "probability": 0.22222657817282265
+            },
+            {
+              "label": "9.4",
+              "probability": 0.17149864239944615
+            }
+          ]
+        },
+        "CN": {
+          "prediction": "7.2",
+          "raw_prediction": "5.4",
+          "confidence": 0.0602818087958366,
+          "constraint_applied": true,
+          "top3": [
+            {
+              "label": "5.4",
+              "probability": 0.4872905416798158
+            },
+            {
+              "label": "4.2",
+              "probability": 0.21974129730690742
+            },
+            {
+              "label": "4.4",
+              "probability": 0.07122527964217
+            }
+          ]
+        }
+      }
+    },
+    {
+      "row": 10,
+      "bbox": [
+        371,
+        1738,
+        1824,
+        1827
+      ],
+      "cell_boxes": [
+        [
+          371,
+          1738,
+          1066,
+          1827
+        ],
+        [
+          1066,
+          1738,
+          1304,
+          1827
+        ],
+        [
+          1304,
+          1738,
+          1542,
+          1827
+        ],
+        [
+          1542,
+          1738,
+          1824,
+          1827
+        ]
+      ],
+      "heads": {
+        "subject": {
+          "prediction": "GDCD",
+          "raw_prediction": "GDCD",
+          "confidence": 0.9995327620540126,
+          "constraint_applied": false,
+          "top3": [
+            {
+              "label": "GDCD",
+              "probability": 0.9995327620540126
+            },
+            {
+              "label": "Lịch sử",
+              "probability": 0.0002493719246647096
+            },
+            {
+              "label": "GDQP-AN",
+              "probability": 0.00016038931127089598
+            }
+          ]
+        },
+        "HK1": {
+          "prediction": "5.4",
+          "raw_prediction": "7.5",
+          "confidence": 0.08198160460726746,
+          "constraint_applied": true,
+          "top3": [
+            {
+              "label": "7.5",
+              "probability": 0.24137609821115127
+            },
+            {
+              "label": "7.4",
+              "probability": 0.09022589833373139
+            },
+            {
+              "label": "5.4",
+              "probability": 0.08198160460726746
+            }
+          ]
+        },
+        "HK2": {
+          "prediction": "7.2",
+          "raw_prediction": "7.2",
+          "confidence": 0.7254412716565337,
+          "constraint_applied": true,
+          "top3": [
+            {
+              "label": "7.2",
+              "probability": 0.7254412716565337
+            },
+            {
+              "label": "7.4",
+              "probability": 0.059387207294493004
+            },
+            {
+              "label": "7.3",
+              "probability": 0.05423511735553585
+            }
+          ]
+        },
+        "CN": {
+          "prediction": "6.6",
+          "raw_prediction": "6.6",
+          "confidence": 0.1700265184026424,
+          "constraint_applied": true,
+          "top3": [
+            {
+              "label": "6.6",
+              "probability": 0.1700265184026424
+            },
+            {
+              "label": "6.8",
+              "probability": 0.16177229860115777
+            },
+            {
+              "label": "6.4",
+              "probability": 0.16076327856607087
+            }
+          ]
+        }
+      }
+    },
+    {
+      "row": 11,
+      "bbox": [
+        371,
+        1827,
+        1824,
+        1929
+      ],
+      "cell_boxes": [
+        [
+          371,
+          1827,
+          1066,
+          1929
+        ],
+        [
+          1066,
+          1827,
+          1304,
+          1929
+        ],
+        [
+          1304,
+          1827,
+          1542,
+          1929
+        ],
+        [
+          1542,
+          1827,
+          1824,
+          1929
+        ]
+      ],
+      "heads": {
+        "subject": {
+          "prediction": "Công nghệ",
+          "raw_prediction": "Công nghệ",
+          "confidence": 0.9690958813201139,
+          "constraint_applied": false,
+          "top3": [
+            {
+              "label": "Công nghệ",
+              "probability": 0.9690958813201139
+            },
+            {
+              "label": "GDQP-AN",
+              "probability": 0.010721257189329574
+            },
+            {
+              "label": "Sinh học",
+              "probability": 0.009937101883558622
+            }
+          ]
+        },
+        "HK1": {
+          "prediction": "8.1",
+          "raw_prediction": "8.1",
+          "confidence": 0.7281522470144959,
+          "constraint_applied": true,
+          "top3": [
+            {
+              "label": "8.1",
+              "probability": 0.7281522470144959
+            },
+            {
+              "label": "8.7",
+              "probability": 0.17796255793036722
+            },
+            {
+              "label": "8.4",
+              "probability": 0.027640506406421596
+            }
+          ]
+        },
+        "HK2": {
+          "prediction": "8.2",
+          "raw_prediction": "8.5",
+          "confidence": 0.3565600664876707,
+          "constraint_applied": true,
+          "top3": [
+            {
+              "label": "8.5",
+              "probability": 0.4995637935905541
+            },
+            {
+              "label": "8.2",
+              "probability": 0.3565600664876707
+            },
+            {
+              "label": "6.2",
+              "probability": 0.08309531783965471
+            }
+          ]
+        },
+        "CN": {
+          "prediction": "8.2",
+          "raw_prediction": "8.2",
+          "confidence": 0.7340151696380641,
+          "constraint_applied": true,
+          "top3": [
+            {
+              "label": "8.2",
+              "probability": 0.7340151696380641
+            },
+            {
+              "label": "6.2",
+              "probability": 0.09528194130510925
+            },
+            {
+              "label": "8.5",
+              "probability": 0.06885816905352828
+            }
+          ]
+        }
+      }
+    },
+    {
+      "row": 12,
+      "bbox": [
+        371,
+        1929,
+        1824,
+        2019
+      ],
+      "cell_boxes": [
+        [
+          371,
+          1929,
+          1066,
+          2019
+        ],
+        [
+          1066,
+          1929,
+          1304,
+          2019
+        ],
+        [
+          1304,
+          1929,
+          1542,
+          2019
+        ],
+        [
+          1542,
+          1929,
+          1824,
+          2019
+        ]
+      ],
+      "heads": {
+        "subject": {
+          "prediction": "Thể dục",
+          "raw_prediction": "Thể dục",
+          "confidence": 0.9972746766764556,
+          "constraint_applied": false,
+          "top3": [
+            {
+              "label": "Thể dục",
+              "probability": 0.9972746766764556
+            },
+            {
+              "label": "Địa lí",
+              "probability": 0.0021772448247043136
+            },
+            {
+              "label": "ĐTB các môn học",
+              "probability": 0.0003088455133633166
+            }
+          ]
+        },
+        "HK1": {
+          "prediction": "Đ",
+          "raw_prediction": "Đ",
+          "confidence": 0.9969541054571032,
+          "constraint_applied": false,
+          "top3": [
+            {
+              "label": "Đ",
+              "probability": 0.9969541054571032
+            },
+            {
+              "label": "10.0",
+              "probability": 0.0010647834933166782
+            },
+            {
+              "label": "8.1",
+              "probability": 0.0009744151428985262
+            }
+          ]
+        },
+        "HK2": {
+          "prediction": "Đ",
+          "raw_prediction": "Đ",
+          "confidence": 0.9984849097756597,
+          "constraint_applied": false,
+          "top3": [
+            {
+              "label": "Đ",
+              "probability": 0.9984849097756597
+            },
+            {
+              "label": "Trống",
+              "probability": 0.00036028764284620096
+            },
+            {
+              "label": "8.1",
+              "probability": 0.00033376753345275425
+            }
+          ]
+        },
+        "CN": {
+          "prediction": "Đ",
+          "raw_prediction": "Đ",
+          "confidence": 0.9963242771491402,
+          "constraint_applied": false,
+          "top3": [
+            {
+              "label": "Đ",
+              "probability": 0.9963242771491402
+            },
+            {
+              "label": "10.0",
+              "probability": 0.0011936095464789836
+            },
+            {
+              "label": "8.1",
+              "probability": 0.0008509144469801893
+            }
+          ]
+        }
+      }
+    },
+    {
+      "row": 13,
+      "bbox": [
+        371,
+        2019,
+        1824,
+        2108
+      ],
+      "cell_boxes": [
+        [
+          371,
+          2019,
+          1066,
+          2108
+        ],
+        [
+          1066,
+          2019,
+          1304,
+          2108
+        ],
+        [
+          1304,
+          2019,
+          1542,
+          2108
+        ],
+        [
+          1542,
+          2019,
+          1824,
+          2108
+        ]
+      ],
+      "heads": {
+        "subject": {
+          "prediction": "GDQP-AN",
+          "raw_prediction": "GDQP-AN",
+          "confidence": 0.8067861649331055,
+          "constraint_applied": false,
+          "top3": [
+            {
+              "label": "GDQP-AN",
+              "probability": 0.8067861649331055
+            },
+            {
+              "label": "Công nghệ",
+              "probability": 0.15223053314730173
+            },
+            {
+              "label": "Ngoại ngữ",
+              "probability": 0.01372734651847337
+            }
+          ]
+        },
+        "HK1": {
+          "prediction": "8.6",
+          "raw_prediction": "8.6",
+          "confidence": 0.4576544961352225,
+          "constraint_applied": true,
+          "top3": [
+            {
+              "label": "8.6",
+              "probability": 0.4576544961352225
+            },
+            {
+              "label": "9.6",
+              "probability": 0.20180178260740805
+            },
+            {
+              "label": "8.4",
+              "probability": 0.07926819560730974
+            }
+          ]
+        },
+        "HK2": {
+          "prediction": "8.9",
+          "raw_prediction": "8.6",
+          "confidence": 0.06257419724344046,
+          "constraint_applied": true,
+          "top3": [
+            {
+              "label": "8.6",
+              "probability": 0.6026438611454862
+            },
+            {
+              "label": "8.5",
+              "probability": 0.10587466565567594
+            },
+            {
+              "label": "8.9",
+              "probability": 0.06257419724344046
+            }
+          ]
+        },
+        "CN": {
+          "prediction": "8.8",
+          "raw_prediction": "8.8",
+          "confidence": 0.8191854804822812,
+          "constraint_applied": true,
+          "top3": [
+            {
+              "label": "8.8",
+              "probability": 0.8191854804822812
+            },
+            {
+              "label": "8.4",
+              "probability": 0.07789437624212486
+            },
+            {
+              "label": "8.6",
+              "probability": 0.034556306541132474
+            }
+          ]
+        }
+      }
+    },
+    {
+      "row": 14,
+      "bbox": [
+        371,
+        2108,
+        1824,
+        2197
+      ],
+      "cell_boxes": [
+        [
+          371,
+          2108,
+          1066,
+          2197
+        ],
+        [
+          1066,
+          2108,
+          1304,
+          2197
+        ],
+        [
+          1304,
+          2108,
+          1542,
+          2197
+        ],
+        [
+          1542,
+          2108,
+          1824,
+          2197
+        ]
+      ],
+      "heads": {
+        "subject": {
+          "prediction": "Hóa học",
+          "raw_prediction": "Hóa học",
+          "confidence": 0.5436531491926828,
+          "constraint_applied": false,
+          "top3": [
+            {
+              "label": "Hóa học",
+              "probability": 0.5436531491926828
+            },
+            {
+              "label": "Nghề phổ thông",
+              "probability": 0.27334446379981164
+            },
+            {
+              "label": "Ngoại ngữ",
+              "probability": 0.13646664347385834
+            }
+          ]
+        },
+        "HK1": {
+          "prediction": "8.0",
+          "raw_prediction": "7.0",
+          "confidence": 0.1550910908429502,
+          "constraint_applied": true,
+          "top3": [
+            {
+              "label": "7.0",
+              "probability": 0.4003292123928399
+            },
+            {
+              "label": "9.0",
+              "probability": 0.16758569806566798
+            },
+            {
+              "label": "8.0",
+              "probability": 0.1550910908429502
+            }
+          ]
+        },
+        "HK2": {
+          "prediction": "9.0",
+          "raw_prediction": "10.0",
+          "confidence": 0.24197814108958407,
+          "constraint_applied": true,
+          "top3": [
+            {
+              "label": "10.0",
+              "probability": 0.3203819082036885
+            },
+            {
+              "label": "9.0",
+              "probability": 0.24197814108958407
+            },
+            {
+              "label": "6.1",
+              "probability": 0.16768450728876
+            }
+          ]
+        },
+        "CN": {
+          "prediction": "8.7",
+          "raw_prediction": "8.0",
+          "confidence": 0.16293215503999176,
+          "constraint_applied": true,
+          "top3": [
+            {
+              "label": "8.0",
+              "probability": 0.26049268788658936
+            },
+            {
+              "label": "8.7",
+              "probability": 0.16293215503999176
+            },
+            {
+              "label": "9.1",
+              "probability": 0.08935424171103308
+            }
+          ]
+        }
+      }
+    },
+    {
+      "row": 15,
+      "bbox": [
+        371,
+        2197,
+        1824,
+        2299
+      ],
+      "cell_boxes": [
+        [
+          371,
+          2197,
+          1066,
+          2299
+        ],
+        [
+          1066,
+          2197,
+          1304,
+          2299
+        ],
+        [
+          1304,
+          2197,
+          1542,
+          2299
+        ],
+        [
+          1542,
+          2197,
+          1824,
+          2299
+        ]
+      ],
+      "heads": {
+        "subject": {
+          "prediction": "Hóa học",
+          "raw_prediction": "Hóa học",
+          "confidence": 0.33262441276364174,
+          "constraint_applied": false,
+          "top3": [
+            {
+              "label": "Hóa học",
+              "probability": 0.33262441276364174
+            },
+            {
+              "label": "Nghề phổ thông",
+              "probability": 0.25578664660159406
+            },
+            {
+              "label": "Ngoại ngữ",
+              "probability": 0.20215029081411878
+            }
+          ]
+        },
+        "HK1": {
+          "prediction": "8.3",
+          "raw_prediction": "8.3",
+          "confidence": 0.6788343869263932,
+          "constraint_applied": true,
+          "top3": [
+            {
+              "label": "8.3",
+              "probability": 0.6788343869263932
+            },
+            {
+              "label": "8.2",
+              "probability": 0.10403087020106583
+            },
+            {
+              "label": "8.7",
+              "probability": 0.09374317351575352
+            }
+          ]
+        },
+        "HK2": {
+          "prediction": "8.3",
+          "raw_prediction": "8.3",
+          "confidence": 0.8191655548423726,
+          "constraint_applied": true,
+          "top3": [
+            {
+              "label": "8.3",
+              "probability": 0.8191655548423726
+            },
+            {
+              "label": "8.8",
+              "probability": 0.09597532491425216
+            },
+            {
+              "label": "8.4",
+              "probability": 0.05171479745796251
+            }
+          ]
+        },
+        "CN": {
+          "prediction": "8.3",
+          "raw_prediction": "8.8",
+          "confidence": 0.36284199209162493,
+          "constraint_applied": true,
+          "top3": [
+            {
+              "label": "8.8",
+              "probability": 0.37618039311291146
+            },
+            {
+              "label": "8.3",
+              "probability": 0.36284199209162493
+            },
+            {
+              "label": "8.4",
+              "probability": 0.2260167929749012
+            }
+          ]
+        }
+      }
+    },
+    {
+      "row": 16,
+      "bbox": [
+        371,
+        2299,
+        1824,
+        2414
+      ],
+      "cell_boxes": [
+        [
+          371,
+          2299,
+          1066,
+          2414
+        ],
+        [
+          1066,
+          2299,
+          1304,
+          2414
+        ],
+        [
+          1304,
+          2299,
+          1542,
+          2414
+        ],
+        [
+          1542,
+          2299,
+          1824,
+          2414
+        ]
+      ],
+      "heads": {
+        "subject": {
+          "prediction": "ĐTB các môn học",
+          "raw_prediction": "ĐTB các môn học",
+          "confidence": 0.9670052992396682,
+          "constraint_applied": false,
+          "top3": [
+            {
+              "label": "ĐTB các môn học",
+              "probability": 0.9670052992396682
+            },
+            {
+              "label": "Nghề phổ thông",
+              "probability": 0.023375788103133097
+            },
+            {
+              "label": "Ngoại ngữ",
+              "probability": 0.006993081549668425
+            }
+          ]
+        },
+        "HK1": {
+          "prediction": "7.1",
+          "raw_prediction": "7.1",
+          "confidence": 0.9842139894134279,
+          "constraint_applied": true,
+          "top3": [
+            {
+              "label": "7.1",
+              "probability": 0.9842139894134279
+            },
+            {
+              "label": "7.4",
+              "probability": 0.005273289826332922
+            },
+            {
+              "label": "9.1",
+              "probability": 0.0035323753326064774
+            }
+          ]
+        },
+        "HK2": {
+          "prediction": "7.6",
+          "raw_prediction": "7.4",
+          "confidence": 0.4020435857607617,
+          "constraint_applied": true,
+          "top3": [
+            {
+              "label": "7.4",
+              "probability": 0.43456167993120287
+            },
+            {
+              "label": "7.6",
+              "probability": 0.4020435857607617
+            },
+            {
+              "label": "7.8",
+              "probability": 0.08683068753374293
+            }
+          ]
+        },
+        "CN": {
+          "prediction": "7.4",
+          "raw_prediction": "7.4",
+          "confidence": 0.9947752926781029,
+          "constraint_applied": true,
+          "top3": [
+            {
+              "label": "7.4",
+              "probability": 0.9947752926781029
+            },
+            {
+              "label": "7.2",
+              "probability": 0.0018259830971879658
+            },
+            {
+              "label": "9.4",
+              "probability": 0.0015038609810129157
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "preview": "transcript_gridparse\\deploy_onnx\\package\\sample_overlay.jpg"
+}
