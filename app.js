@@ -2,7 +2,7 @@
 'use strict';
 const $ = id => document.getElementById(id);
 const state = { image:null, stream:null, sessions:null, config:null, busy:false };
-const FILES = { roi:'roi_detector.onnx', grid:'grid_detector.onnx', reader:'row_reader.onnx' };
+const FILES = { roi:'./roi_detector.onnx', grid:'./grid_detector.onnx', reader:'./row_reader.onnx' };
 const status = (msg,kind='') => { $('status').textContent=msg; $('status').className='status '+kind; };
 function setImage(img){ state.image=img; $('preview').src=img.src || img; $('preview').hidden=false; $('runBtn').disabled=false; $('runBtn').textContent='Chạy nhận diện'; $('resultsPanel').hidden=true; status('Đã nhận ảnh. Nhấn “Chạy nhận diện”.'); }
 $('fileInput').addEventListener('change', e=>{const f=e.target.files&&e.target.files[0];if(!f)return;const url=URL.createObjectURL(f);const img=new Image();img.onload=()=>setImage(img);img.onerror=()=>status('Không đọc được ảnh này. Hãy thử JPG hoặc PNG.','error');img.src=url;});
