@@ -22,7 +22,100 @@ function roiMorphology(binary,w,h){ // Approximate PIL MaxFilter(3) then MinFilt
 function outputByName(result,preferred){if(result[preferred])return result[preferred];return result[Object.keys(result)[0]];}
 async function findRois(img,s){const t=prep(img,384,512);const res=await s.roi.run({image:t});const ten=outputByName(res,'roi_logits'),a=ten.data,shape=ten.dims;const h=shape[2],w=shape[3],mask0=new Uint8Array(w*h);for(let i=0;i<w*h;i++)mask0[i]=sigmoid(a[i])>=.5?1:0;const mask=roiMorphology(mask0,w,h),components=findComponents(mask,w,h),sx=img.width/w,sy=img.height/h;return components.filter(b=>(b[2]-b[0])*(b[3]-b[1])>=.008*w*h).map(b=>({bbox:[Math.round(b[0]*sx),Math.round(b[1]*sy),Math.round(b[2]*sx),Math.round(b[3]*sy)]})).sort((a,b)=>a.bbox[1]-b.bbox[1]||a.bbox[0]-b.bbox[0]);}
 function peaks(values,threshold,minGap){if(!values.length||Math.max(...values)<threshold)return[];const p=[];for(let i=0;i<values.length;i++){const get=j=>values[Math.max(0,Math.min(values.length-1,j))];p.push((get(i-2)+4*get(i-1)+6*get(i)+4*get(i+1)+get(i+2))/16);}const max=Math.max(...p),cand=[];for(let i=1;i<p.length-1;i++)if(p[i]>=p[i-1]&&p[i]>=p[i+1]&&p[i]>=Math.max(threshold,max*.28))cand.push(i);const chosen=[];cand.sort((a,b)=>p[b]-p[a]);for(const x of cand)if(chosen.every(y=>Math.abs(x-y)>=minGap))chosen.push(x);return chosen.sort((a,b)=>a-b);}
-function orderedColumns(scores,minGap){const width=scores[0].length;let dp=Float64Array.from(scores[0]),backs=[];for(let r=1;r<scores.length;r++){const cur=new Float64Array(width);cur.fill(-Infinity);const par=new Int32Array(width);par.fill(-1);for(let x=0;x<width;x++){const last=x-minGap;if(last>=0){let best=-Infinity,bi=-1;for(let j=0;j<=last;j++)if(dp[j]>best){best=dp[j];bi=j;}if(bi>=0){cur[x]=best+scores[r][x];par[x]=bi;}}}if(!Array.from(cur).some(Number.isFinite))throw Error('Không xác định được ranh giới cột.');backs.push(par);dp=cur;}let x=0;for(let i=1;i<width;i++)if(dp[i]>dp[x])x=i;const positions=[x];for(let k=backs.length-1;k>=0;k--)positions.push(backs[k][positions[positions.length-1]]);return positions.reverse();}
+
+function orderedColumns(scores, minGap) {
+  if (!Array.isArray(scores) || scores.length !== 5) {
+    throw new Error(
+      `Model lưới phải trả về 5 đường biên dọc, nhưng nhận được ${scores?.length ?? 0}.`
+    );
+  }
+
+  const width = scores[0]?.length ?? 0;
+
+  if (width < scores.length) {
+    throw new Error(
+      `Đầu ra model quá nhỏ để tìm 5 cột (chiều rộng=${width}).`
+    );
+  }
+
+  if (scores.some(row => !row || row.length !== width)) {
+    throw new Error("Kích thước các đường biên dọc không đồng nhất.");
+  }
+
+  // Thay NaN và Infinity bằng điểm thấp để tránh làm hỏng thuật toán.
+  const clean = scores.map(row =>
+    Array.from(row, v => Number.isFinite(v) ? v : -1e6)
+  );
+
+  // Không ép khoảng cách quá lớn khiến không thể tìm đủ 5 đường.
+  const gap = Math.max(
+    1,
+    Math.min(
+      Math.floor(Number.isFinite(minGap) ? minGap : 1),
+      Math.floor((width - 1) / (scores.length - 1))
+    )
+  );
+
+  let dp = Float64Array.from(clean[0]);
+  const backs = [];
+
+  for (let r = 1; r < clean.length; r++) {
+    const cur = new Float64Array(width);
+    cur.fill(-Infinity);
+
+    const par = new Int32Array(width);
+    par.fill(-1);
+
+    let best = -Infinity;
+    let bestIndex = -1;
+
+    for (let x = 0; x < width; x++) {
+      const j = x - gap;
+
+      if (j >= 0 && dp[j] > best) {
+        best = dp[j];
+        bestIndex = j;
+      }
+
+      if (bestIndex >= 0 && Number.isFinite(best)) {
+        cur[x] = best + clean[r][x];
+        par[x] = bestIndex;
+      }
+    }
+
+    if (!Array.from(cur).some(Number.isFinite)) {
+      throw new Error(
+        "Không tìm được ranh giới cột hợp lệ. Hãy thử ảnh rõ hơn hoặc kiểm tra đầu ra grid_detector.onnx."
+      );
+    }
+
+    backs.push(par);
+    dp = cur;
+  }
+
+  let x = 0;
+  for (let i = 1; i < width; i++) {
+    if (dp[i] > dp[x]) x = i;
+  }
+
+  if (!Number.isFinite(dp[x])) {
+    throw new Error("Model không tạo được điểm số hợp lệ cho ranh giới cột.");
+  }
+
+  const positions = [x];
+
+  for (let k = backs.length - 1; k >= 0; k--) {
+    const previous = backs[k][positions[positions.length - 1]];
+
+    if (previous < 0) {
+      throw new Error("Không truy ngược được vị trí các cột.");
+    }
+
+    positions.push(previous);
+  }
+
+  return positions.reverse();
+}
 function parseGrid(logits,shape,iw,ih){const [n,ch,mh,mw]=shape,raw=logits;const prob=(c,y,x)=>sigmoid(raw[c*mh*mw+y*mw+x]);const yp=[];for(let y=0;y<mh;y++){let sum=0;for(let x=0;x<mw;x++)sum+=prob(0,y,x);yp.push(sum/mw);}let ys=[];for(const th of [.55,.40,.30,.22,.16]){ys=peaks(yp,th,Math.max(1,Math.floor(mh*.008)));if(ys.length>=4)break;}if(ys.length<4)throw Error(`Mô hình lưới chỉ tìm được ${ys.length} đường ngang.`);const profiles=[];for(let c=1;c<6;c++){const row=[];for(let x=0;x<mw;x++){let sum=0;for(let y=ys[0];y<=ys[ys.length-1];y++)sum+=raw[c*mh*mw+y*mw+x];row.push(sum/(ys[ys.length]-ys[0]+1));}profiles.push(row);}const xs=orderedColumns(profiles,Math.max(1,Math.floor(mw*.015))).map(x=>Math.max(0,Math.min(iw-1,Math.round(x*iw/mw))));const rows=[];for(let i=0;i<ys.length-1;i++){const ya=Math.max(0,Math.round(ys[i]*ih/mh)),yb=Math.min(ih,Math.round(ys[i+1]*ih/mh));if(yb<=ya)continue;rows.push({bbox:[xs[0],ya,xs[4],yb],cell_boxes:[0,1,2,3].map(j=>[xs[j],ya,xs[j+1],yb])});}return rows;}
 function cropToImage(img,b){const c=document.createElement('canvas');c.width=Math.max(1,b[2]-b[0]);c.height=Math.max(1,b[3]-b[1]);c.getContext('2d').drawImage(img,b[0],b[1],c.width,c.height,0,0,c.width,c.height);const out=new Image();out.src=c.toDataURL('image/png');return new Promise((resolve,reject)=>{out.onload=()=>resolve(out);out.onerror=reject;});}
 async function findRows(img,rois,s){const all=[];for(let ri=0;ri<rois.length;ri++){const [x0,y0,x1,y1]=rois[ri].bbox,px=Math.round((x1-x0)*.025),py=Math.round((y1-y0)*.025),cx0=Math.max(0,x0-px),cy0=Math.max(0,y0-py),cx1=Math.min(img.width,x1+px),cy1=Math.min(img.height,y1+py);const crop=await cropToImage(img,[cx0,cy0,cx1,cy1]);const t=prep(crop,384,512);const res=await s.grid.run({roi:t});const ten=outputByName(res,'grid_logits');const rows=parseGrid(ten.data,ten.dims,crop.width,crop.height);for(const r of rows){const boxes=r.cell_boxes.map(b=>[b[0]+cx0,b[1]+cy0,b[2]+cx0,b[3]+cy0]);boxes[0][0]=x0;boxes[3][2]=x1;for(const b of boxes){b[0]=Math.max(x0,Math.min(x1,b[0]));b[2]=Math.max(x0,Math.min(x1,b[2]));b[1]=Math.max(y0,Math.min(y1,b[1]));b[3]=Math.max(y0,Math.min(y1,b[3]));}if(boxes.every(b=>b[2]>b[0]&&b[3]>b[1]))all.push({bbox:[x0,Math.max(y0,r.bbox[1]+cy0),x1,Math.min(y1,r.bbox[3]+cy0)],cell_boxes:boxes,roi_index:ri});}}return all.sort((a,b)=>a.bbox[1]-b.bbox[1]||a.bbox[0]-b.bbox[0]);}
