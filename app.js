@@ -118,19 +118,71 @@ function orderedColumns(scores, minGap) {
 }
 function parseGrid(logits,shape,iw,ih){const [n,ch,mh,mw]=shape,raw=logits;const prob=(c,y,x)=>sigmoid(raw[c*mh*mw+y*mw+x]);const yp=[];for(let y=0;y<mh;y++){let sum=0;for(let x=0;x<mw;x++)sum+=prob(0,y,x);yp.push(sum/mw);}let ys=[];for(const th of [.55,.40,.30,.22,.16]){ys=peaks(yp,th,Math.max(1,Math.floor(mh*.008)));if(ys.length>=4)break;}if(ys.length<4)throw Error(`Mô hình lưới chỉ tìm được ${ys.length} đường ngang.`);const profiles=[];for(let c=1;c<6;c++){const row=[];for(let x=0;x<mw;x++){let sum=0;for(let y=ys[0];y<=ys[ys.length-1];y++)sum+=raw[c*mh*mw+y*mw+x];row.push(sum/(ys[ys.length]-ys[0]+1));}profiles.push(row);}const xs=orderedColumns(profiles,Math.max(1,Math.floor(mw*.015))).map(x=>Math.max(0,Math.min(iw-1,Math.round(x*iw/mw))));const rows=[];for(let i=0;i<ys.length-1;i++){const ya=Math.max(0,Math.round(ys[i]*ih/mh)),yb=Math.min(ih,Math.round(ys[i+1]*ih/mh));if(yb<=ya)continue;rows.push({bbox:[xs[0],ya,xs[4],yb],cell_boxes:[0,1,2,3].map(j=>[xs[j],ya,xs[j+1],yb])});}return rows;}
 function cropToImage(img,b){const c=document.createElement('canvas');c.width=Math.max(1,b[2]-b[0]);c.height=Math.max(1,b[3]-b[1]);c.getContext('2d').drawImage(img,b[0],b[1],c.width,c.height,0,0,c.width,c.height);const out=new Image();out.src=c.toDataURL('image/png');return new Promise((resolve,reject)=>{out.onload=()=>resolve(out);out.onerror=reject;});}
-async function findRows(img,rois,s){const all=[];for(let ri=0;ri<rois.length;ri++){const [x0,y0,x1,y1]=rois[ri].bbox;const cx0=x0,cy0=y0,cx1=x1,cy1=y1;const crop=await cropToImage(img,[cx0,cy0,cx1,cy1]);const t=prep(crop,384,512);const res=await s.grid.run({roi:t});const ten=outputByName(res,'grid_logits');const rows=parseGrid(ten.data,ten.dims,crop.width,crop.height);for(const r of rows){const boxes=r.cell_boxes.map(b=>[b[0]+cx0,b[1]+cy0,b[2]+cx0,b[3]+cy0]);boxes[0][0]=x0;boxes[3][2]=x1;for(const b of boxes){b[0]=Math.max(x0,Math.min(x1,b[0]));b[2]=Math.max(x0,Math.min(x1,b[2]));b[1]=Math.max(y0,Math.min(y1,b[1]));b[3]=Math.max(y0,Math.min(y1,b[3]));
-if (valid) {
-  all.push({
-    bbox: [
-      x0,
-      Math.max(y0, r.bbox[1] + cy0),
-      x1,
-      Math.min(y1, r.bbox[3] + cy0)
-    ],
-    cell_boxes: boxes,
-    roi_index: ri
-  });
-};}}return all.sort((a,b)=>a.bbox[1]-b.bbox[1]||a.bbox[0]-b.bbox[0]);}
+
+async function findRows(img, rois, s) {
+  const all = [];
+
+  for (let ri = 0; ri < rois.length; ri++) {
+    const [x0, y0, x1, y1] = rois[ri].bbox;
+
+    const crop = await cropToImage(img, [x0, y0, x1, y1]);
+    const t = prep(crop, 384, 512);
+
+    const res = await s.grid.run({ roi: t });
+    const ten = outputByName(res, 'grid_logits');
+
+    const rows = parseGrid(
+      ten.data,
+      ten.dims,
+      crop.width,
+      crop.height
+    );
+
+    for (const r of rows) {
+      const boxes = r.cell_boxes.map(b => [
+        b[0] + x0,
+        b[1] + y0,
+        b[2] + x0,
+        b[3] + y0
+      ]);
+
+      // Giới hạn tọa độ trong ROI.
+      for (const b of boxes) {
+        b[0] = Math.max(x0, Math.min(x1, b[0]));
+        b[1] = Math.max(y0, Math.min(y1, b[1]));
+        b[2] = Math.max(x0, Math.min(x1, b[2]));
+        b[3] = Math.max(y0, Math.min(y1, b[3]));
+      }
+
+      // Chỉ nhận hàng có đủ 4 ô với kích thước hợp lệ.
+      const valid = boxes.length === 4 &&
+        boxes.every(b =>
+          b.every(Number.isFinite) &&
+          b[2] > b[0] &&
+          b[3] > b[1]
+        );
+
+      if (valid) {
+        all.push({
+          bbox: [
+            x0,
+            Math.max(y0, r.bbox[1] + y0),
+            x1,
+            Math.min(y1, r.bbox[3] + y0)
+          ],
+          cell_boxes: boxes,
+          roi_index: ri
+        });
+      }
+    }
+  }
+
+  return all.sort(
+    (a, b) => a.bbox[1] - b.bbox[1] ||
+              a.bbox[0] - b.bbox[0]
+  );
+}
+
 function softmax(arr){let max=-Infinity;for(const x of arr)if(x>max)max=x;const e=Array.from(arr,x=>Math.exp(x-max)),sum=e.reduce((a,b)=>a+b,0);return e.map(x=>x/sum);}
 function top3(p,names){return p.map((probability,i)=>({label:names[i]??String(i),probability})).sort((a,b)=>b.probability-a.probability).slice(0,3);}
 function decode(outputs,idx,cfg){const names=[cfg.subject_classes,cfg.score_classes,cfg.score_classes,cfg.score_classes];const probs=outputs.map(o=>{const per=o.dims.slice(1).reduce((a,b)=>a*b,1);return softmax(o.data.slice(idx*per,(idx+1)*per));});const raw=probs.map(p=>p.indexOf(Math.max(...p))),chosen=raw.slice();let constrained=false;if(raw.slice(1).every(i=>i<101)){let best=-Infinity,ia=0,ib=0,ic=0;for(let a=0;a<101;a++)for(let b=0;b<101;b++){const c=Math.floor((a+2*b+1)/3);const score=Math.log(Math.max(probs[1][a],1e-12))+Math.log(Math.max(probs[2][b],1e-12))+Math.log(Math.max(probs[3][c],1e-12));if(score>best){best=score;ia=a;ib=b;ic=c;}}chosen.splice(1,3,ia,ib,ic);constrained=true;}const out={};['subject','HK1','HK2','CN'].forEach((key,k)=>{const i=chosen[k];out[key]={prediction:names[k][i]??String(i),raw_prediction:names[k][raw[k]]??String(raw[k]),confidence:probs[k][i],constraint_applied:constrained&&k>0,top3:top3(probs[k],names[k])};});return out;}
