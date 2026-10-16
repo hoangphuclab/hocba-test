@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#10233f"><title>Đọc điểm học bạ — ONNX Web</title>
+<link rel="stylesheet" href="style.css">
+<script src="https://cdn.jsdelivr.net/npm/onnxruntime-web@1.22.0/dist/ort.min.js"></script>
+</head>
+<body>
+<header><div class="eyebrow">CHẠY TRỰC TIẾP TRÊN THIẾT BỊ</div><h1>Đọc điểm học bạ</h1><p>ONNX Runtime Web · xử lý trên trình duyệt</p></header>
+<main>
+<section class="panel"><h2>1. Chọn ảnh đầu vào</h2><p class="muted">Chụp bảng điểm rõ nét, đủ sáng và giữ điện thoại song song với trang giấy.</p>
+<div class="actions"><label class="button primary" for="fileInput">Chọn ảnh từ thư viện</label><input id="fileInput" type="file" accept="image/*" hidden><button id="cameraBtn" class="button secondary">Mở camera</button></div>
+<div id="cameraArea" hidden><video id="video" playsinline autoplay></video><div class="actions"><button id="captureBtn" class="button primary">Chụp ảnh</button><button id="closeCameraBtn" class="button secondary">Đóng camera</button></div></div>
+<img id="preview" alt="Ảnh đầu vào" hidden><canvas id="workCanvas" hidden></canvas>
+</section>
+<section class="panel"><h2>2. Chạy mô hình</h2><div id="status" class="status">Sẵn sàng. Model sẽ được tải khi bấm chạy lần đầu.</div><button id="runBtn" class="button primary full" disabled>Chọn ảnh trước</button><div id="progress" class="muted small"></div></section>
+<section id="resultsPanel" class="panel" hidden><div class="resultHead"><h2>Kết quả dự đoán</h2><button id="downloadBtn" class="button secondary">Tải JSON</button></div><div id="summary" class="summary"></div><div class="tableWrap"><table><thead><tr><th>#</th><th>Tên môn</th><th>HK1</th><th>HK2</th><th>Cả năm</th></tr></thead><tbody id="resultRows"></tbody></table></div><details><summary>Chi tiết độ tin cậy</summary><pre id="rawResults"></pre></details></section>
+<section class="panel note"><h2>Lưu ý</h2><ul><li>Lần đầu cần tải ba model ONNX về trình duyệt; cần mạng để tải trang và thư viện.</li><li>Sau khi tải model, suy luận được chạy trong trình duyệt bằng WASM/CPU; ảnh không được gửi lên máy chủ bởi ứng dụng này.</li><li>Kết quả là dự đoán tự động, cần đối chiếu với học bạ gốc. Ảnh nghiêng/mờ có thể làm phát hiện sai hàng.</li></ul></section>
+</main><footer>Demo thử nghiệm · Không dùng làm căn cứ chính thức</footer>
+<script src="app.js"></script>
+</body></html>
