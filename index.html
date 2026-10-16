@@ -2,21 +2,21 @@
 <html lang="vi">
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="theme-color" content="#10233f"><title>Đọc điểm học bạ — ONNX Web</title>
+<meta name="theme-color" content="#10233f"><title>Kiểm tra bảng điểm</title>
 <link rel="stylesheet" href="style.css">
 <script src="https://cdn.jsdelivr.net/npm/onnxruntime-web@1.22.0/dist/ort.min.js"></script>
 </head>
 <body>
-<header><div class="eyebrow">CHẠY TRỰC TIẾP TRÊN THIẾT BỊ</div><h1>Đọc điểm học bạ</h1><p>ONNX Runtime Web · xử lý trên trình duyệt</p></header>
+<header><h1>Kiểm tra bảng điểm</h1><p>Tải ảnh học bạ để kiểm tra kết quả đọc điểm.</p></header>
 <main>
-<section class="panel"><h2>1. Chọn ảnh đầu vào</h2><p class="muted">Chụp bảng điểm rõ nét, đủ sáng và giữ điện thoại song song với trang giấy.</p>
+<section class="panel"><h2>Chọn ảnh học bạ</h2><p class="muted">Chọn ảnh rõ nét, đủ sáng và chụp trọn bảng điểm.</p>
 <div class="actions"><label class="button primary" for="fileInput">Chọn ảnh từ thư viện</label><input id="fileInput" type="file" accept="image/*" hidden><button id="cameraBtn" class="button secondary">Mở camera</button></div>
 <div id="cameraArea" hidden><video id="video" playsinline autoplay></video><div class="actions"><button id="captureBtn" class="button primary">Chụp ảnh</button><button id="closeCameraBtn" class="button secondary">Đóng camera</button></div></div>
 <img id="preview" alt="Ảnh đầu vào" hidden><canvas id="workCanvas" hidden></canvas>
 </section>
-<section class="panel"><h2>2. Chạy mô hình</h2><div id="status" class="status">Sẵn sàng. Model sẽ được tải khi bấm chạy lần đầu.</div><button id="runBtn" class="button primary full" disabled>Chọn ảnh trước</button><div id="progress" class="muted small"></div></section>
-<section id="resultsPanel" class="panel" hidden><div class="resultHead"><h2>Kết quả dự đoán</h2><button id="downloadBtn" class="button secondary">Tải JSON</button></div><div id="summary" class="summary"></div><div class="tableWrap"><table><thead><tr><th>#</th><th>Tên môn</th><th>HK1</th><th>HK2</th><th>Cả năm</th></tr></thead><tbody id="resultRows"></tbody></table></div><details><summary>Chi tiết độ tin cậy</summary><pre id="rawResults"></pre></details></section>
-<section class="panel note"><h2>Lưu ý</h2><ul><li>Lần đầu cần tải ba model ONNX về trình duyệt; cần mạng để tải trang và thư viện.</li><li>Sau khi tải model, suy luận được chạy trong trình duyệt bằng WASM/CPU; ảnh không được gửi lên máy chủ bởi ứng dụng này.</li><li>Kết quả là dự đoán tự động, cần đối chiếu với học bạ gốc. Ảnh nghiêng/mờ có thể làm phát hiện sai hàng.</li></ul></section>
-</main><footer>Demo thử nghiệm · Không dùng làm căn cứ chính thức</footer>
+<section class="panel"><h2>Thực hiện</h2><div id="status" class="status">Vui lòng chọn ảnh để bắt đầu.</div><button id="runBtn" class="button primary full" disabled>Chọn ảnh trước</button><div id="progress" class="muted small"></div></section>
+<section id="resultsPanel" class="panel" hidden><div class="resultHead"><h2>Kết quả đọc điểm</h2><button id="downloadBtn" class="button secondary">Tải JSON</button></div><div id="summary" class="summary"></div><div class="tableWrap"><table><thead><tr><th>#</th><th>Tên môn</th><th>HK1</th><th>HK2</th><th>Cả năm</th></tr></thead><tbody id="resultRows"></tbody></table></div><details><summary>Thông tin kết quả</summary><pre id="rawResults"></pre></details></section>
+<section class="panel note"><h2>Lưu ý</h2><ul><li>Ảnh mờ, nghiêng hoặc thiếu sáng có thể ảnh hưởng đến kết quả.</li><li>Vui lòng kiểm tra lại các điểm với học bạ gốc trước khi sử dụng.</li></ul></section>
+</main><footer>Công cụ kiểm tra · Kết quả cần được đối chiếu với bản gốc</footer>
 <script src="app.js"></script>
 </body></html>
