@@ -118,15 +118,9 @@ function orderedColumns(scores, minGap) {
 }
 function parseGrid(logits,shape,iw,ih){const [n,ch,mh,mw]=shape,raw=logits;const prob=(c,y,x)=>sigmoid(raw[c*mh*mw+y*mw+x]);const yp=[];for(let y=0;y<mh;y++){let sum=0;for(let x=0;x<mw;x++)sum+=prob(0,y,x);yp.push(sum/mw);}let ys=[];for(const th of [.55,.40,.30,.22,.16]){ys=peaks(yp,th,Math.max(1,Math.floor(mh*.008)));if(ys.length>=4)break;}if(ys.length<4)throw Error(`Mô hình lưới chỉ tìm được ${ys.length} đường ngang.`);const profiles=[];for(let c=1;c<6;c++){const row=[];for(let x=0;x<mw;x++){let sum=0;for(let y=ys[0];y<=ys[ys.length-1];y++)sum+=raw[c*mh*mw+y*mw+x];row.push(sum/(ys[ys.length]-ys[0]+1));}profiles.push(row);}const xs=orderedColumns(profiles,Math.max(1,Math.floor(mw*.015))).map(x=>Math.max(0,Math.min(iw-1,Math.round(x*iw/mw))));const rows=[];for(let i=0;i<ys.length-1;i++){const ya=Math.max(0,Math.round(ys[i]*ih/mh)),yb=Math.min(ih,Math.round(ys[i+1]*ih/mh));if(yb<=ya)continue;rows.push({bbox:[xs[0],ya,xs[4],yb],cell_boxes:[0,1,2,3].map(j=>[xs[j],ya,xs[j+1],yb])});}return rows;}
 function cropToImage(img,b){const c=document.createElement('canvas');c.width=Math.max(1,b[2]-b[0]);c.height=Math.max(1,b[3]-b[1]);c.getContext('2d').drawImage(img,b[0],b[1],c.width,c.height,0,0,c.width,c.height);const out=new Image();out.src=c.toDataURL('image/png');return new Promise((resolve,reject)=>{out.onload=()=>resolve(out);out.onerror=reject;});}
-async function findRows(img,rois,s){const all=[];for(let ri=0;ri<rois.length;ri++){const [x0,y0,x1,y1]=rois[ri].bbox,px=Math.round((x1-x0)*.025),py=Math.round((y1-y0)*.025),cx0=Math.max(0,x0-px),cy0=Math.max(0,y0-py),cx1=Math.min(img.width,x1+px),cy1=Math.min(img.height,y1+py);const crop=await cropToImage(img,[cx0,cy0,cx1,cy1]);const t=prep(crop,384,512);const res=await s.grid.run({roi:t});const ten=outputByName(res,'grid_logits');const rows=parseGrid(ten.data,ten.dims,crop.width,crop.height);for(const r of rows){const boxes=r.cell_boxes.map(b=>[b[0]+cx0,b[1]+cy0,b[2]+cx0,b[3]+cy0]);boxes[0][0]=x0;boxes[3][2]=x1;for(const b of boxes){b[0]=Math.max(x0,Math.min(x1,b[0]));b[2]=Math.max(x0,Math.min(x1,b[2]));b[1]=Math.max(y0,Math.min(y1,b[1]));b[3]=Math.max(y0,Math.min(y1,b[3]));}const valid = boxes.every(
+async function findRows(img,rois,s){const all=[];for(let ri=0;ri<rois.length;ri++){const [x0,y0,x1,y1]=rois[ri].bbox;const cx0=x0,cy0=y0,cx1=x1,cy1=y1;const crop=await cropToImage(img,[cx0,cy0,cx1,cy1]);const t=prep(crop,384,512);const res=await s.grid.run({roi:t});const ten=outputByName(res,'grid_logits');const rows=parseGrid(ten.data,ten.dims,crop.width,crop.height);for(const r of rows){const boxes=r.cell_boxes.map(b=>[b[0]+cx0,b[1]+cy0,b[2]+cx0,b[3]+cy0]);boxes[0][0]=x0;boxes[3][2]=x1;for(const b of boxes){b[0]=Math.max(x0,Math.min(x1,b[0]));b[2]=Math.max(x0,Math.min(x1,b[2]));b[1]=Math.max(y0,Math.min(y1,b[1]));b[3]=Math.max(y0,Math.min(y1,b[3]));}const valid = boxes.every(
   b => b[2] > b[0] && b[3] > b[1]
 );
-
-$('progress').textContent =
-  'ROI: ' + [x0,y0,x1,y1].join(', ') +
-  ' | Ô hợp lệ: ' +
-  boxes.filter(b => b[2] > b[0] && b[3] > b[1]).length +
-  '/4 | Tọa độ ô: ' + JSON.stringify(boxes);
 
 if (valid) {
   all.push({
