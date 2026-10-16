@@ -7,16 +7,16 @@
 <script src="https://cdn.jsdelivr.net/npm/onnxruntime-web@1.22.0/dist/ort.min.js"></script>
 </head>
 <body>
-<header><h1>Kiểm tra bảng điểm</h1><p>Tải ảnh học bạ để kiểm tra kết quả đọc điểm.</p></header>
+<header><h1>Kiểm tra bảng điểm</h1></header>
 <main>
-<section class="panel"><h2>Chọn ảnh học bạ</h2><p class="muted">Chọn ảnh rõ nét, đủ sáng và chụp trọn bảng điểm.</p>
+<section class="panel"><h2>Ảnh học bạ</h2>
 <div class="actions"><label class="button primary" for="fileInput">Chọn ảnh từ thư viện</label><input id="fileInput" type="file" accept="image/*" hidden><button id="cameraBtn" class="button secondary">Mở camera</button></div>
 <div id="cameraArea" hidden><video id="video" playsinline autoplay></video><div class="actions"><button id="captureBtn" class="button primary">Chụp ảnh</button><button id="closeCameraBtn" class="button secondary">Đóng camera</button></div></div>
 <img id="preview" alt="Ảnh đầu vào" hidden><canvas id="workCanvas" hidden></canvas>
 </section>
-<section class="panel"><h2>Thực hiện</h2><div id="status" class="status">Vui lòng chọn ảnh để bắt đầu.</div><button id="runBtn" class="button primary full" disabled>Chọn ảnh trước</button><div id="progress" class="muted small"></div></section>
-<section id="resultsPanel" class="panel" hidden><div class="resultHead"><h2>Kết quả đọc điểm</h2><button id="downloadBtn" class="button secondary">Tải JSON</button></div><div id="summary" class="summary"></div><div class="tableWrap"><table><thead><tr><th>#</th><th>Tên môn</th><th>HK1</th><th>HK2</th><th>Cả năm</th></tr></thead><tbody id="resultRows"></tbody></table></div><details><summary>Thông tin kết quả</summary><pre id="rawResults"></pre></details></section>
-<section class="panel note"><h2>Lưu ý</h2><ul><li>Ảnh mờ, nghiêng hoặc thiếu sáng có thể ảnh hưởng đến kết quả.</li><li>Vui lòng kiểm tra lại các điểm với học bạ gốc trước khi sử dụng.</li></ul></section>
-</main><footer>Công cụ kiểm tra · Kết quả cần được đối chiếu với bản gốc</footer>
+<section class="panel"><h2>Nhận diện</h2><div id="status" class="status">Vui lòng chọn ảnh để bắt đầu.</div><button id="runBtn" class="button primary full" disabled>Chọn ảnh trước</button><div id="progress" class="muted small"></div></section>
+<section id="resultsPanel" class="panel" hidden><div class="resultHead"><h2>Kết quả đọc điểm</h2><button id="downloadBtn" class="button secondary">Tải JSON</button></div><div id="summary" class="summary"></div><div class="tableWrap"><table><thead><tr><th>#</th><th>Tên môn</th><th>HK1</th><th>HK2</th><th>Cả năm</th></tr></thead><tbody id="resultRows"></tbody></table></div></section>
+
+</main>
 <script src="app.js"></script>
 </body></html>
