@@ -1,22 +1,45 @@
 <!doctype html>
 <html lang="vi">
 <head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="theme-color" content="#10233f"><title>Kiểm tra bảng điểm</title>
-<link rel="stylesheet" href="style.css">
-<script src="https://cdn.jsdelivr.net/npm/onnxruntime-web@1.22.0/dist/ort.min.js"></script>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Test nhận diện giấy tờ</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.jsdelivr.net/npm/onnxruntime-web@1.22.0/dist/ort.min.js"></script>
 </head>
 <body>
-<header><h1>Kiểm tra bảng điểm</h1></header>
-<main>
-<section class="panel"><h2>Ảnh học bạ</h2>
-<div class="actions"><label class="button primary" for="fileInput">Chọn ảnh từ thư viện</label><input id="fileInput" type="file" accept="image/*" hidden><button id="cameraBtn" class="button secondary">Mở camera</button></div>
-<div id="cameraArea" hidden><video id="video" playsinline autoplay></video><div class="actions"><button id="captureBtn" class="button primary">Chụp ảnh</button><button id="closeCameraBtn" class="button secondary">Đóng camera</button></div></div>
-<img id="preview" alt="Ảnh đầu vào" hidden><canvas id="workCanvas" hidden></canvas>
-</section>
-<section class="panel"><h2>Nhận diện</h2><div id="status" class="status">Vui lòng chọn ảnh để bắt đầu.</div><button id="runBtn" class="button primary full" disabled>Chọn ảnh trước</button><div id="progress" class="muted small"></div></section>
-<section id="resultsPanel" class="panel" hidden><div class="resultHead"><h2>Kết quả đọc điểm</h2><button id="downloadBtn" class="button secondary">Tải JSON</button></div><div id="summary" class="summary"></div><div class="tableWrap"><table><thead><tr><th>#</th><th>Tên môn</th><th>HK1</th><th>HK2</th><th>Cả năm</th></tr></thead><tbody id="resultRows"></tbody></table></div></section>
+  <main class="app">
+    <header><h1>Test nhận diện giấy tờ</h1><span id="modelStatus" class="status">Đang tải model…</span></header>
 
-</main>
-<script src="app.js"></script>
-</body></html>
+    <section class="panel">
+      <div class="actions">
+        <label class="button" for="fileInput">Chọn ảnh</label>
+        <input id="fileInput" type="file" accept="image/*" hidden>
+        <button id="cameraButton" type="button">Mở camera</button>
+        <button id="captureButton" type="button" disabled>Chụp ảnh</button>
+      </div>
+      <video id="video" autoplay playsinline hidden></video>
+      <canvas id="previewCanvas" hidden></canvas>
+      <div id="placeholder" class="placeholder">Chọn ảnh hoặc mở camera</div>
+      <div class="previewWrap"><img id="preview" alt="Ảnh kiểm tra" hidden></div>
+      <div class="actions bottomActions">
+        <button id="runButton" class="primary" type="button" disabled>Nhận diện</button>
+        <button id="stopCameraButton" type="button" disabled>Đóng camera</button>
+      </div>
+    </section>
+
+    <section id="resultPanel" class="panel result" hidden>
+      <div class="resultLabel">Kết quả</div>
+      <h2 id="resultName">—</h2>
+      <div class="metrics">
+        <div><span>Thời gian suy luận</span><strong id="inferenceTime">—</strong></div>
+        <div><span>Tải model</span><strong id="loadTime">—</strong></div>
+      </div>
+      <p id="resultNote" class="note"></p>
+    </section>
+    <p id="error" class="error" hidden></p>
+    <footer>Chạy trực tiếp trên trình duyệt · Không tải ảnh lên máy chủ</footer>
+  </main>
+  <script src="app.js"></script>
+</body>
+</html>
