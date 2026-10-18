@@ -1,7 +1,7 @@
 'use strict';
 
 const $ = (id) => document.getElementById(id);
-const MODEL_URL = 'https://huggingface.co/nhphuc1411/hocba/resolve/main/unified_document_pipeline.onnx";
+const MODEL_URL = "https://huggingface.co/nhphuc1411/hocba/resolve/main/unified_document_pipeline.onnx";
 const DOC_CLASSES = ['Bằng tốt nghiệp', 'CCCD', 'ĐTUT', 'Giấy xác nhận', 'Học bạ lớp 10', 'Học bạ lớp 11', 'Học bạ lớp 12', 'Bìa học bạ', 'VSAT'];
 const DOC_KEYS = ['bangtotnghiep', 'cccd', 'dtut', 'gxn', 'hocba10', 'hocba11', 'hocba12', 'hocbabia', 'vsat'];
 const GRADE_KEYS = ['hocba10', 'hocba11', 'hocba12'];
